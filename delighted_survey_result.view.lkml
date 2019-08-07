@@ -9,6 +9,8 @@ view: delighted_survey_result {
     drill_fields: [detail*]
   }
 
+
+
   dimension: __sdc_primary_key {
     type: string
     sql: ${TABLE}.__sdc_primary_key ;;
@@ -152,7 +154,10 @@ view: delighted_survey_result {
     type: string
     sql: ${TABLE}.event_data__comment ;;
   }
-
+  measure: event_count {
+    type: count_distinct
+    sql: ${TABLE}.event_id;;
+      }
   set: detail {
     fields: [
       __sdc_primary_key,
