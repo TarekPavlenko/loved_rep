@@ -154,10 +154,22 @@ view: delighted_survey_result {
     type: string
     sql: ${TABLE}.event_data__comment ;;
   }
+
+  dimension: score_range{
+    type: string
+    sql: case when ${event_data__score}<8 then 'Detractor'
+              when ${event_data__score}=8 then 'Passive'
+              when ${event_data__score}>8 then 'Promoters'
+              end
+     ;;
+  }
+
   measure: event_count {
     type: count_distinct
     sql: ${TABLE}.event_id;;
       }
+
+
   set: detail {
     fields: [
       __sdc_primary_key,
