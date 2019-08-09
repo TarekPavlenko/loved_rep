@@ -103,7 +103,17 @@ view: accounts_redshift {
     type: count_distinct
     sql: ${TABLE}.user_id ;;
   }
-
+  dimension: account_cnt_group {
+    type: string
+    sql: case when ${TABLE}.accounts_cnt = 1 then '1'
+              when ${TABLE}.accounts_cnt = 2 then '2'
+              when ${TABLE}.accounts_cnt = 3 then '3'
+              when ${TABLE}.accounts_cnt = 4 then '4'
+              when ${TABLE}.accounts_cnt = 5 then '5'
+              when ${TABLE}.accounts_cnt > 5 then '5+'
+              end
+              ;;
+  }
 
 
   set: detail {
