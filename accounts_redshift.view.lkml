@@ -99,6 +99,12 @@ view: accounts_redshift {
     type: time
     sql: ${TABLE}.uuid_ts ;;
   }
+  measure: accounts_cnt {
+    type: count_distinct
+    sql: ${TABLE}.user_id ;;
+  }
+
+
 
   set: detail {
     fields: [
