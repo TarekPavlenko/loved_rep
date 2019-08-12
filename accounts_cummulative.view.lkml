@@ -32,12 +32,11 @@ view: accounts_cummulative {
       a.event_date
       ,b.account_group
 
-      ,count (distinct b.user_id) as user_cnt_cumm
+      , b.user_id
       from a2 a
       left join a2 b
       on a.event_date>=b.event_date
-      group by a.event_date, b.account_group
-      order by a.event_date, b.account_group desc
+
        ;;
   }
 
@@ -55,10 +54,14 @@ view: accounts_cummulative {
     type: string
     sql: ${TABLE}.account_group ;;
   }
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
+  }
 
   measure: user_cnt_cumm {
-    type: number
-    sql: ${TABLE}.user_cnt_cumm ;;
+    type: count_distinct
+    sql: ${TABLE}.user_id ;;
   }
 
   set: detail {
