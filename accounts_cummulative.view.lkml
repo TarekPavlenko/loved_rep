@@ -56,7 +56,7 @@ view: accounts_cummulative {
     sql: ${TABLE}.account_group ;;
   }
 
-  dimension: user_cnt_cumm {
+  measure: user_cnt_cumm {
     type: number
     sql: ${TABLE}.user_cnt_cumm ;;
   }
