@@ -100,7 +100,7 @@ view: accounts_redshift {
     sql: ${TABLE}.uuid_ts ;;
   }
   measure: accounts_cnt {
-    type: running_total
+    type: count_distinct
     sql: ${TABLE}.id ;;
   }
 
