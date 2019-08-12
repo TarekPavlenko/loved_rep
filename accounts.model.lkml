@@ -5,8 +5,8 @@ include: "*.view"
 
 # include all dashboards in this project
 
-explore: accounts_redshift {
-  view_label: "accounts_redshift"
-  label: "accounts_redshift"
+explore: accounts_number {
+  view_label: "accounts_number"
+  label: "accounts_number"
 
 }
