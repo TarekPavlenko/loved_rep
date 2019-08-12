@@ -36,6 +36,17 @@ view: accounts_number {
     type: number
     sql: ${TABLE}.event_cnt ;;
   }
+  dimension: account_group {
+    type: string
+    sql: case when ${TABLE}.event_cnt = 1 then '1'
+              when ${TABLE}.event_cnt = 2 then '2'
+              when ${TABLE}.event_cnt = 3 then '3'
+              when ${TABLE}.event_cnt = 4 then '4'
+              when ${TABLE}.event_cnt = 5 then '5'
+              when ${TABLE}.event_cnt > 5 then '5+' end;;
+  }
+
+
 
   set: detail {
     fields: [event_date, user_id, event_cnt]
