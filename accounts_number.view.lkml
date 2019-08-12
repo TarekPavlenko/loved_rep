@@ -36,6 +36,10 @@ view: accounts_number {
     type: number
     sql: ${TABLE}.event_cnt ;;
   }
+  measure: user_cnt {
+    type: count_distinct
+    sql: ${TABLE}.user_id;;
+  }
   dimension: account_group {
     type: string
     sql: case when ${TABLE}.event_cnt = 1 then '1'
