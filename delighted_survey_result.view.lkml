@@ -166,7 +166,7 @@ view: delighted_survey_result {
 
   measure: event_count {
     type: count_distinct
-    sql: ${TABLE}.event_id;;
+    sql: ${TABLE}.event_data__person__email;;
       }
 
 
