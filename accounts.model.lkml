@@ -5,8 +5,8 @@ include: "*.view"
 
 # include all dashboards in this project
 
-explore: accounts_cummulative {
-  view_label: "accounts_cummulative"
-  label: "accounts_cummulative"
+explore: accounts_number_evolution {
+  view_label: "accounts_number_evolution"
+  label: "accounts_number_evolution"
 
 }
