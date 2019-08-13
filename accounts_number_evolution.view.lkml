@@ -49,7 +49,7 @@ from aa
 
 select date_datetime,
 event_balance,
-count (distinct user_id)
+count (distinct user_id) as user_num
 from aaa
 where event_balance is not null
 group by date_datetime,
@@ -67,12 +67,12 @@ event_balance
     sql: ${TABLE}.event_balance ;;
   }
 
-  dimension: count {
+  measure: user_num {
     type: number
-    sql: ${TABLE}.count ;;
+    sql: ${TABLE}.user_num ;;
   }
 
   set: detail {
-    fields: [date_datetime, event_balance, count]
+    fields: [date_datetime, event_balance, user_num]
   }
 }
