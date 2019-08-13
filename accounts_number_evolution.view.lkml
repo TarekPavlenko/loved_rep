@@ -62,7 +62,7 @@ event_balance
     sql: ${TABLE}.date_datetime ;;
   }
 
-  measure: event_balance {
+  dimension: event_balance {
     type: number
     sql: ${TABLE}.event_balance ;;
   }
