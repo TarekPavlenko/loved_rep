@@ -73,6 +73,6 @@ event_balance
   }
 
   set: detail {
-    fields: [date_datetime, event_balance, user_num]
+    fields: [date_datetime, event_balance]
   }
 }
