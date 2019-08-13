@@ -46,14 +46,13 @@ select date_datetime
 ,sum(event_cnt) over(partition by user_id order by date_datetime asc rows between unbounded preceding and current row) event_balance
 from aa
 )
-select * from(
+
 select date_datetime,
 event_balance,
-count (distinct user_id) as user_num
+ user_id
 from aaa
 where event_balance is not null
-group by date_datetime,
-event_balance) temp
+
 
 
  ;;
@@ -69,12 +68,16 @@ event_balance) temp
     sql: ${TABLE}.event_balance ;;
   }
 
-  dimension: count {
-    type: number
-    sql: (${TABLE}.count) ;;
+  dimension: user_id {
+    type: string
+    sql: (${TABLE}.user_id) ;;
+  }
+  measure: user_cnt {
+    type: count_distinct
+    sql: ${user_id}  ;;
   }
 
   set: detail {
-    fields: [date_datetime, event_balance, count]
+    fields: [date_datetime, event_balance, user_id]
   }
 }
