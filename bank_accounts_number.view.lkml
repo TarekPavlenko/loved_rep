@@ -74,6 +74,10 @@ where event_balance is not null
     type: string
     sql: ${TABLE}.user_id ;;
   }
+  measure: user_cnt {
+    type: count_distinct
+    sql: ${user_id}  ;;
+  }
 
   set: detail {
     fields: [date_datetime, event_balance, user_id]
