@@ -188,7 +188,7 @@ view: delighted_survey_result {
   measure: NPS {
     type: number
     sql: (${promoters_count}*1.00 - ${detractors_count}*1.00) / ${event_count}*1.00;;
-
+    value_format_name: percent_2
   }
 
 
