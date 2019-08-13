@@ -157,8 +157,8 @@ view: delighted_survey_result {
 
   dimension: score_range{
     type: string
-    sql: case when ${event_data__score}<8 then 'Detractor'
-              when ${event_data__score}=8 then 'Passive'
+    sql: case when ${event_data__score}<8 then 'Detractors'
+              when ${event_data__score}=8 then 'Passives'
               when ${event_data__score}>8 then 'Promoters'
               end
      ;;
@@ -168,6 +168,29 @@ view: delighted_survey_result {
     type: count_distinct
     sql: ${TABLE}.event_data__person__email;;
       }
+
+  measure: promoters_count {
+    type: count_distinct
+    sql: ${TABLE}.event_data__person__email;;
+    filters: {
+      field: score_range
+      value: "'Promoters'"
+  }
+}
+  measure: detractors_count {
+    type: count_distinct
+    sql: ${TABLE}.event_data__person__email;;
+    filters: {
+      field: score_range
+      value: "'Detractors'"
+    }
+  }
+  measure: NPS {
+    type: number
+    sql: (${promoters_count}*1.00 - ${detractors_count}*1.00) / ${event_count}*1.00;;
+
+  }
+
 
 
   set: detail {
