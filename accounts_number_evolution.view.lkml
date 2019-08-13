@@ -69,7 +69,7 @@ event_balance
 
   dimension: count {
     type: number
-    sql: ${TABLE}.count ;;
+    sql: sum(${TABLE}.count) ;;
   }
 
   set: detail {
