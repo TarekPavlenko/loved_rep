@@ -71,10 +71,7 @@ event_balance
     type: number
     sql: ${TABLE}.count ;;
   }
-measure: user_num {
-  type:number
-  sql:  ${TABLE}.user_num;;
-}
+
   set: detail {
     fields: [date_datetime, event_balance, count]
   }
