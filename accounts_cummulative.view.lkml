@@ -35,7 +35,7 @@ view: accounts_cummulative {
       , b.user_id
       from a2 a
       left join a2 b
-      on a.event_date>=b.event_date
+      on a.event_date>=b.event_date and a.user_id=b.user_id
 
        ;;
   }
