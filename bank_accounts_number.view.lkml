@@ -12,7 +12,7 @@ view: bank_accounts_number {
                   inner join
                   prod.bank_setup_success cc2
                   on cc1.user_id=cc2.user_id and cc1.timestamp>=cc2.timestamp
-where user_id in (
+where cc1.user_id in (
 select distinct user_id
 from
 prod.signup_date_of_birth
