@@ -12,7 +12,7 @@ view: delighted_list_of_monthly_survey {
       on bss.user_id=u.id
 
       where timestamp < current_date -interval '14 day'
-      and timestamp > current_date -interval '1 month'
+
        ;;
   }
 
