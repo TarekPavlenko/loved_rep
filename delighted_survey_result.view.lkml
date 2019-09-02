@@ -1,7 +1,7 @@
 view: delighted_survey_result {
   derived_table: {
-    sql: select * from delighted_surveys_data."data"
-        ;;
+    sql: select * from delighted_surveys_data."data" dsd
+       ;;
   }
 
   measure: count {
