@@ -14,6 +14,7 @@ view: survey_list_14_days_after_bank_acc_created {
       on bss.user_id=u.id
 
       where timestamp < current_date -interval '14 day'
+      and user_is in (select distinct user_id from ${active_users_accounts.SQL_TABLE_NAME} where balance>0)
  ;;
   }
 
