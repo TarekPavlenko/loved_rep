@@ -1,4 +1,4 @@
-view: user_balance_accounts_2 {
+view: active_accounts_users {
   derived_table: {
     sql: with
       digit as (
@@ -81,7 +81,7 @@ view: user_balance_accounts_2 {
       select
       y.*,u.user_id
       from yy y left join users u on y.account_id=u.account_id
-       ;;
+ ;;
   }
 
   measure: count {
@@ -89,17 +89,8 @@ view: user_balance_accounts_2 {
     drill_fields: [detail*]
   }
 
-  dimension_group: date_datetime {
-    label: "Date_datetime"
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+  dimension: date_datetime {
+    type: date
     sql: ${TABLE}.date_datetime ;;
   }
 
@@ -112,65 +103,30 @@ view: user_balance_accounts_2 {
     type: string
     sql: ${TABLE}.account_id ;;
   }
-  dimension: user_id {
-    type: string
-    sql: ${TABLE}.user_id ;;
+
+  dimension: amount {
+    type: number
+    sql: ${TABLE}.amount ;;
   }
 
   dimension: balance {
     type: number
     sql: ${TABLE}.balance ;;
   }
-  measure: balance_on_date {
-    type: sum
-    sql: ${TABLE}.balance ;;
-    value_format_name: usd
-  }
-  measure: amount_on_date {
-    type: sum
-    sql: ${TABLE}.amount ;;
-    value_format_name: usd
-  }
-  measure: active_accounts_num{
-    type: count_distinct
-    sql: ${TABLE}.account_id ;;
-    filters: {
-      field: balance
-      value: ">0"
-    }
-  }
-  measure: active_users_num{
-    type: count_distinct
+
+  dimension: user_id {
+    type: string
     sql: ${TABLE}.user_id ;;
-    filters: {
-      field: balance
-      value: ">0"
-    }
-  }
-  measure: total_accounts_num{
-    type: count_distinct
-    sql: ${TABLE}.account_id ;;
-  }
-  measure: balance_per_active_account{
-    label: "Balance per active account"
-    group_label: "Accounts Counts"
-    type: number
-    sql:
-    case when ${active_accounts_num}  is null or ${active_accounts_num} = 0 then 0 else
-    sum(${balance}*1.00)/ (${active_accounts_num}*1.00) end ;;
-    value_format_name: usd_0
-  }
-  measure: active_accounts_per_user{
-    label: "Active accounts per user"
-    group_label: "Accounts Counts"
-    type: number
-    sql:
-    case when ${active_accounts_num}  is null or ${active_accounts_num} = 0 then 0 else
-    (${active_accounts_num}*1.00)/ (${active_users_num}*1.00) end ;;
-    value_format_name: decimal_2
   }
 
   set: detail {
-    fields: [ date, account_id, balance]
+    fields: [
+      date_datetime,
+      date,
+      account_id,
+      amount,
+      balance,
+      user_id
+    ]
   }
 }
