@@ -6,7 +6,7 @@ view: delighted_survey_result {
 , sum(balance) as balance
 from ${active_accounts_users.SQL_TABLE_NAME}
 where date_datetime = current_date
-group by email) t
+group by phone) t
 on dsd.event_data__person__phone_number=t.phone
 where t.balance is not null
 ;;
