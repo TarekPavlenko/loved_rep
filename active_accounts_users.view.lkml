@@ -79,7 +79,7 @@ view: active_accounts_users {
       order by 2,1
       )
       select
-      y.*,u.user_id
+      y.*,u.user_id, u.email
       from yy y left join users u on y.account_id=u.account_id
  ;;
   }
@@ -118,7 +118,10 @@ view: active_accounts_users {
     type: string
     sql: ${TABLE}.user_id ;;
   }
-
+  dimension: email {
+    type: string
+    sql: ${TABLE}.email ;;
+  }
   set: detail {
     fields: [
       date_datetime,
