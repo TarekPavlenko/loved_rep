@@ -21,6 +21,10 @@ on dsd.event_data__person__email=t.email ;;
     type: string
     sql: ${TABLE}.__sdc_primary_key ;;
   }
+  dimension: balance {
+    type: number
+    sql: ${TABLE}.balance ;;
+  }
 
   dimension_group: _sdc_batched_at {
     type: time
