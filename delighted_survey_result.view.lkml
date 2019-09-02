@@ -1,9 +1,7 @@
 view: delighted_survey_result {
   derived_table: {
     sql: select * from delighted_surveys_data."data"
-    where event_data__person__email
-    in (select distinct email as event_data__person__email from ${active_accounts_users.SQL_TABLE_NAME} where balance >0)
-      ;;
+        ;;
   }
 
   measure: count {
