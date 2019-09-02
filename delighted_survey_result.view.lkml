@@ -7,8 +7,11 @@ view: delighted_survey_result {
 from ${active_accounts_users.SQL_TABLE_NAME}
 where date_datetime = current_date
 group by email) t
-on dsd.event_data__person__email=t.email ;;
+on dsd.event_data__person__email=t.email
+where t.balance is not null
+;;
   }
+
 
   measure: count {
     type: count
