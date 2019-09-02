@@ -1,7 +1,8 @@
 view: delighted_survey_result {
   derived_table: {
     sql: select * from delighted_surveys_data."data" dsd
-       ;;
+      inner join ${active_accounts_users.SQL_TABLE_NAME} aau on dsd.event_data__person__email= aau.email and date(dsd._sdc_received_at)=aau.date_datetime
+     where aau.balance >0 ;;
   }
 
   measure: count {
