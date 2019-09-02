@@ -79,7 +79,9 @@ view: active_accounts_users {
       order by 2,1
       )
       select
-      y.*,u.user_id, uu.email
+      y.*,u.user_id
+      ,uu.email
+      ,uu.phone_number else u.phone end, '(','+1'),' - ',''),')',''),' ','') as phone
       from yy y left join users u on y.account_id=u.account_id
       left join prod.users uu on u.user_id=uu.id
  ;;
