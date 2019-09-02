@@ -82,8 +82,8 @@ view: active_accounts_users {
       y.*,u.user_id
       ,uu.email
       ,replace(replace(replace(replace(
-      case when u.phone_number is not null then
-      u.phone_number else u.phone end, '(','+1'),' - ',''),')',''),' ','') as phone
+      case when uu.phone_number is not null then
+      uu.phone_number else uu.phone end, '(','+1'),' - ',''),')',''),' ','') as phone
       from yy y left join users u on y.account_id=u.account_id
       left join prod.users uu on u.user_id=uu.id
  ;;
