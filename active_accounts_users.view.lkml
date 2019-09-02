@@ -81,6 +81,7 @@ view: active_accounts_users {
       select
       y.*,u.user_id, u.email
       from yy y left join users u on y.account_id=u.account_id
+      left join prod.users uu on u.user_id=uu.id
  ;;
   }
 
