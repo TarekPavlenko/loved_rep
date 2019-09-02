@@ -28,6 +28,10 @@ where t.balance is not null
     type: number
     sql: ${TABLE}.balance ;;
   }
+  dimension: phone {
+    type: string
+    sql: ${TABLE}.phone ;;
+  }
 
   dimension_group: _sdc_batched_at {
     type: time
