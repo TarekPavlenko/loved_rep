@@ -96,6 +96,10 @@ view: active_accounts_users {
     type: date
     sql: ${TABLE}.date_datetime ;;
   }
+  dimension: phone {
+    type: string
+    sql: ${TABLE}.phone ;;
+  }
 
   dimension: date {
     type: date
