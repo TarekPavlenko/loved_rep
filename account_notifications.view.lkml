@@ -20,6 +20,35 @@ view: account_notifications {
     drill_fields: [detail*]
   }
 
+  measure: count_rejected {
+    type: count
+    filters: {
+      field: account_status
+      value: "rejected"
+    }
+  }
+
+  measure: count_indeterminate {
+    type: count
+    filters: {
+      field: account_status
+      value: "indeterminate"
+    }
+  }
+
+  measure: count_approved {
+    type: count
+    filters: {
+      field: account_status
+      value: "approved"
+    }
+  }
+
+  measure: status_ratio {
+    type: number
+    sql: ${count_approved}/${count_rejected}/${count_indeterminate} ;;
+  }
+
   dimension: account_id {
     type: string
     sql: ${TABLE}.account_id ;;
