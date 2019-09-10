@@ -209,6 +209,15 @@ view: ads_facebook {
     sql: ${TABLE}.relevance_score__score ;;
   }
 
+  measure: average_cpc {
+    type: average
+    sql:  ${TABLE}.cpc ;;
+  }
+  measure: total_cost {
+    type: number
+    sql:  ${average_cpc}*1.00*sum(${clicks} ;;
+  }
+
   set: detail {
     fields: [
       _sdc_batched_at_time,
