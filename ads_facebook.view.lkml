@@ -225,9 +225,13 @@ view: ads_facebook {
     type: number
     sql:  ${average_cpc}*1.00*sum(${clicks})*1.00 ;;
   }
-  measure: sum_impressions {
+  measure: total_impressions {
     type: sum
     sql:  (${impressions})*1.00 ;;
+  }
+  measure: total_clicks {
+    type: sum
+    sql:  (${clicks})*1.00 ;;
   }
 
   set: detail {
