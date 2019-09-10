@@ -233,6 +233,10 @@ view: ads_facebook {
     type: sum
     sql:  (${clicks})*1.00 ;;
   }
+  measure: total_spend {
+    type: sum
+    sql:  (${spend})*1.00 ;;
+  }
 
   set: detail {
     fields: [
