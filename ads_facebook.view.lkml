@@ -213,9 +213,21 @@ view: ads_facebook {
     type: average
     sql:  ${TABLE}.cpc ;;
   }
+  measure: average_cpm {
+    type: average
+    sql:  ${TABLE}.cpm ;;
+  }
+  measure: average_ctr {
+    type: average
+    sql:  ${TABLE}.ctr ;;
+  }
   measure: total_cost {
     type: number
     sql:  ${average_cpc}*1.00*sum(${clicks} ;;
+  }
+  measure: sum_impressions {
+    type: sum
+    sql:  ${impressions}*1.00 ;;
   }
 
   set: detail {
