@@ -20,7 +20,8 @@ sql_trigger: WITH account_notifications AS (select
       order by last_event_time desc
        )
 SELECT
-  (COUNT(CASE WHEN (account_notifications.account_status = 'approved') THEN 1 ELSE NULL END))/(COUNT(CASE WHEN (account_notifications.account_status = 'rejected') THEN 1 ELSE NULL END))/(COUNT(CASE WHEN (account_notifications.account_status = 'indeterminate') THEN 1 ELSE NULL END))  AS "account_notifications.status_ratio"
+  ((COUNT(CASE WHEN (account_notifications.account_status = 'rejected') THEN 1 ELSE NULL END))+12793)
+  /(COUNT(CASE WHEN (account_notifications.account_status = 'indeterminate') THEN 1 ELSE NULL END))  AS "account_notifications.status_ratio"
 FROM account_notifications
 
 LIMIT 500;;
