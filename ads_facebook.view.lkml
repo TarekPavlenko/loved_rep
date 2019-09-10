@@ -223,11 +223,11 @@ view: ads_facebook {
   }
   measure: total_cost {
     type: number
-    sql:  ${average_cpc}*1.00*sum(${clicks} ;;
+    sql:  ${average_cpc}*1.00*sum(${clicks})*1.00 ;;
   }
   measure: sum_impressions {
     type: sum
-    sql:  ${impressions}*1.00 ;;
+    sql:  (${impressions})*1.00 ;;
   }
 
   set: detail {
