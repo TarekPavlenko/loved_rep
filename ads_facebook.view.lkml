@@ -221,6 +221,10 @@ view: ads_facebook {
     type: average
     sql:  ${TABLE}.ctr ;;
   }
+  measure: average_rlevance_score {
+    type: average
+    sql:  ${TABLE}.relevance_score__score ;;
+  }
   measure: total_cost {
     type: number
     sql:  ${average_cpc}*1.00*sum(${clicks})*1.00 ;;
