@@ -221,7 +221,7 @@ view: ads_facebook {
     type: average
     sql:  ${TABLE}.ctr ;;
   }
-  measure: average_rlevance_score {
+  measure: average_relevance_score {
     type: average
     sql:  ${TABLE}.relevance_score__score ;;
   }
