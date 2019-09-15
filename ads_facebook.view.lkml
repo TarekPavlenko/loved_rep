@@ -224,6 +224,11 @@ view: ads_facebook {
     sql:  ${TABLE}.cpm ;;
     value_format_name: decimal_2
   }
+  measure: average_cpp {
+    type: average
+    sql:  ${TABLE}.cpp ;;
+    value_format_name: decimal_2
+  }
   measure: average_ctr {
     type: average
     sql:  ${TABLE}.ctr ;;
