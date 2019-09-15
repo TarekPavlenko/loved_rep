@@ -229,6 +229,11 @@ view: ads_facebook {
     sql:  ${TABLE}.ctr ;;
     value_format_name: decimal_2
   }
+  measure: average_unique_ctr {
+    type: average
+    sql:  ${TABLE}.unique_ctr ;;
+    value_format_name: decimal_2
+  }
   measure: average_relevance_score {
     type: average
     sql:  ${TABLE}.relevance_score__score ;;
@@ -247,9 +252,18 @@ view: ads_facebook {
     type: sum
     sql:  (${clicks})*1.00 ;;
   }
+  measure: total_unique_clicks {
+    type: sum
+    sql:  (${unique_clicks})*1.00 ;;
+  }
   measure: total_spend {
     type: sum
     sql:  (${spend})*1.00 ;;
+    value_format_name: decimal_2
+  }
+  measure: total_reach {
+    type: sum
+    sql:  (${reach})*1.00 ;;
     value_format_name: decimal_2
   }
 
