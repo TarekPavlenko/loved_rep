@@ -212,22 +212,27 @@ view: ads_facebook {
   measure: average_cpc {
     type: average
     sql:  ${TABLE}.cpc ;;
+    value_format_name: decimal_2
   }
   measure: average_cpm {
     type: average
     sql:  ${TABLE}.cpm ;;
+    value_format_name: decimal_2
   }
   measure: average_ctr {
     type: average
     sql:  ${TABLE}.ctr ;;
+    value_format_name: decimal_2
   }
   measure: average_relevance_score {
     type: average
     sql:  ${TABLE}.relevance_score__score ;;
+    value_format_name: decimal_2
   }
   measure: total_cost {
     type: number
     sql:  ${average_cpc}*1.00*sum(${clicks})*1.00 ;;
+    value_format_name: decimal_2
   }
   measure: total_impressions {
     type: sum
@@ -240,6 +245,7 @@ view: ads_facebook {
   measure: total_spend {
     type: sum
     sql:  (${spend})*1.00 ;;
+    value_format_name: decimal_2
   }
 
   set: detail {
