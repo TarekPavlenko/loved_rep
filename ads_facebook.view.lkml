@@ -214,6 +214,11 @@ view: ads_facebook {
     sql:  ${TABLE}.cpc ;;
     value_format_name: decimal_2
   }
+  measure: average_cost_per_unique_click {
+    type: average
+    sql:  ${TABLE}.cost_per_unique_click ;;
+    value_format_name: decimal_2
+  }
   measure: average_cpm {
     type: average
     sql:  ${TABLE}.cpm ;;
