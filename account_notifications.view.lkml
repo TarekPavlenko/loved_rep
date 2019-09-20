@@ -9,8 +9,9 @@ view: account_notifications {
       ,min(bae.timestamp) as first_event_time
       from prod.bd_account_event as bae
       left join prod.users as u on u.id=bae.user_id
-      where  bae.account_id in (select account_id from prod.bd_account_event where account_status = 'rejected' or account_status = 'indeterminate')
-      and bae.account_id not in (select account_id from prod.bd_account_event where account_status = 'approved')
+      where  bae.account_id in (select account_id from prod.bd_account_event where account_status = 'rejected'
+      or account_status = 'indeterminate')
+
       group by bae.account_id, bae.account_status, bae.user_id, u.email
       order by last_event_time desc
        ;;
