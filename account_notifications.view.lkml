@@ -6,6 +6,7 @@ view: account_notifications {
       ,bae.user_id
       ,u.email
       ,max(bae.timestamp) as last_event_time
+      ,min(bae.timestamp) as first_event_time
       from prod.bd_account_event as bae
       left join prod.users as u on u.id=bae.user_id
       where  bae.account_id in (select account_id from prod.bd_account_event where account_status = 'rejected' or account_status = 'indeterminate')
@@ -70,6 +71,10 @@ view: account_notifications {
   }
 
   dimension_group: last_event_time {
+    type: time
+    sql: ${TABLE}.last_event_time ;;
+  }
+  dimension_group: first_event_time {
     type: time
     sql: ${TABLE}.last_event_time ;;
   }
