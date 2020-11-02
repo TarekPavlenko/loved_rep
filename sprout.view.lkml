@@ -6,8 +6,13 @@ view: sprout {
   }
   measure: sprouts_count {
     sql: ${TABLE}.applicant_id ;;
-    type: count
+    type: count_distinct
   }
+}
+
+explore: sprout {
+}
+
 
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
@@ -37,7 +42,6 @@ view: sprout {
   #   type: sum
   #   sql: ${lifetime_orders} ;;
   # }
-}
 
 # view: sprouts {
 #   # Or, you could make this view a derived table, like this:
