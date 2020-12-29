@@ -31,6 +31,7 @@ LIMIT 500;;
 
 
 explore: account_notifications {
+  hidden: yes
   view_label: "accounts_notifications"
   label: "accounts_notifications"
 
